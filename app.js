@@ -2,6 +2,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 
 // 비동기 HTTP 요청을 위한 함수: 시도 정보 가져오기
+// ! 대전시는 3000000000
 async function getSidoInfo() {
   const downUrl = 'https://new.land.naver.com/api/regions/list?cortarNo=0000000000';
   const response = await fetch(downUrl, {
@@ -128,6 +129,21 @@ async function aptPrice(aptCode, index, pyeongNo) {
   }
 }
 
+// ! 추가할 헤더 요청
+// {
+//   "Accept-Encoding": "gzip, deflate, br",
+//   "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlJFQUxFU1RBVEUiLCJpYXQiOjE2NTk5MzcxNTIsImV4cCI6MTY1OTk0Nzk1Mn0.PD7SqZO7z8f97uGQpfSKYMPbrLy6YtRl9XYHWaHiVVE",
+//   "Host": "new.land.naver.com",
+//   "Referer": "https://new.land.naver.com/...",
+//   "sec-ch-ua": "\".Not\/A)Brand\";v=\"99\", \"Google Chrome\";v=\"103\", \"Chromium\";v=\"103\"",
+//   "sec-ch-ua-mobile": "?0",
+//   "sec-ch-ua-platform": "macOS",
+//   "Sec-Fetch-Dest": "empty",
+//   "Sec-Fetch-Mode": "cors",
+//   "Sec-Fetch-Site": "same-origin",
+//   "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+//   }
+
 async function getAptInfo(aptCode) {
   const downUrl = `https://new.land.naver.com/api/complexes/${aptCode}?sameAddressGroup=false`;
   try {
@@ -156,18 +172,47 @@ async function processData() {
 }
 
   // 사용 예시
+  // 대전시 sidoInfo[4];
 async function main() {
   try {
     const sidoInfo = await getSidoInfo();
     console.log('Sido Info:', sidoInfo);
-    const gunguInfo = await getGunguInfo(sidoInfo[0]);
-    console.log('Gungu Info:', gunguInfo);
-    const dongInfo = await getDongInfo(gunguInfo[0]);
-    console.log('Dong Info:', dongInfo);
-    const aptList = await getAptList(dongInfo[0]);
-    console.log('Apartment List:', aptList);
+    const gunguInfo = await getGunguInfo(sidoInfo[4]);
+    console.log('대전, Gungu Info:', gunguInfo);
+    /**
+     * Gungu Info: [
+  '3023000000',
+  '3011000000',
+  '3017000000',
+  '3020000000',
+  '3014000000'
+]
+     */
+    const dongInfo = await getDongInfo(gunguInfo[2]);
+    console.log('서구 입력, Dong Info:');
+    console.table(dongInfo);
+    // 둔산동 3017011200
+    const aptList = await getAptList(dongInfo[2]);
+    console.log('둔산동 입력, Apartment List:', aptList);
+    console.table(aptList);
+    /**
+     * Apartment List: [
+  '121596', '5812',   '10143',  '19190',
+  '25200',  '112370', '128676', '124291',
+  '5814',   '24240',  '129362', '25963',
+  '22796',  '24015',  '104431', '25949',
+  '108304', '114478', '119312', '127906',
+  '5815',   '23699',  '104341', '9531',
+  '25951',  '25139',  '14729',  '22272',
+  '104703', '109482', '5817',   '11762',
+  '100772', '141782'
+]
+     */
   } catch (error) {
     console.error('Error in main function:', error);
   }
 }
-// main();
+main();
+
+// https://new.land.naver.com/api/regions/complexes?cortarNo=3017011200&realEstateType=APT&order=
+// 둔산동
