@@ -284,6 +284,113 @@ async function main() {
 // main();
 
 // https://new.land.naver.com/api/regions/complexes?cortarNo=3017011200&realEstateType=APT&order=
-// 둔산동
+// 둔산동 : 
 // getAptInfo('100772').then((data) => {console.log("data:", data)} );
+
+/**
+ * getAptInfo의 예시 - 100772
+ * {
+  photos: [],
+  complexDetail: {
+    complexNo: '100772',
+    complexName: '한국도로공사조합(동산)',
+    cortarNo: '3017011100',
+    realEstateTypeCode: 'APT',
+    realEstateTypeName: '아파트',
+    detailAddress: '351-2',
+    roadAddress: '갈마중로16번길 7',
+    latitude: 36.347233,
+    longitude: 127.371707,
+    totalHouseholdCount: 142,
+    totalLeaseHouseholdCount: 0,
+    permanentLeaseHouseholdCount: 0,
+    nationLeaseHouseholdCount: 0,
+    civilLeaseHouseholdCount: 0,
+    publicLeaseHouseholdCount: 0,
+    longTermLeaseHouseholdCount: 0,
+    etcLeaseHouseholdCount: 0,
+    highFloor: 15,
+    lowFloor: 12,
+    useApproveYmd: '19900618',
+    totalDongCount: 1,
+    maxSupplyArea: 101.9,
+    minSupplyArea: 88.64,
+    dealCount: 1,
+    rentCount: 0,
+    leaseCount: 0,
+    shortTermRentCount: 0,
+    isBookmarked: false,
+    batlRatio: '0',
+    btlRatio: '0',
+    parkingPossibleCount: 0,
+    parkingCountByHousehold: 0,
+    constructionCompanyName: '두산건설',
+    heatMethodTypeCode: 'HT001',
+    heatFuelTypeCode: 'HF001',
+    pyoengNames: '88㎡, 101A㎡, 101B',
+    managementOfficeTelNo: '042-523-8752',
+    address: '대전시 서구 갈마동',
+    roadAddressPrefix: '대전시 서구',
+    roadZipCode: '35272'
+  },
+  complexPyeongDetailList: [
+    {
+      pyeongNo: '1',
+      supplyAreaDouble: 88.64,
+      supplyArea: '88.64',
+      pyeongName: '88',
+      supplyPyeong: '26.81',
+      pyeongName2: '26',
+      exclusiveArea: '72.99',
+      exclusivePyeong: '22.07',
+      householdCountByPyeong: '24',
+      realEstateTypeCode: 'A01',
+      exclusiveRate: '82',
+      entranceType: '계단식',
+      landPriceMaxByPtp: [Object],
+      roomCnt: '3',
+      bathroomCnt: '2'
+    },
+    {
+      pyeongNo: '2',
+      supplyAreaDouble: 101.81,
+      supplyArea: '101.81',
+      pyeongName: '101A',
+      supplyPyeong: '30.79',
+      pyeongName2: '30A',
+      exclusiveArea: '84.9',
+      exclusivePyeong: '25.68',
+      householdCountByPyeong: '116',
+      realEstateTypeCode: 'A01',
+      exclusiveRate: '83',
+      grandPlanList: [Array],
+      articleStatistics: [Object],
+      entranceType: '계단식',
+      landPriceMaxByPtp: [Object],
+      roomCnt: '3',
+      bathroomCnt: '2'
+    },
+    {
+      pyeongNo: '3',
+      supplyAreaDouble: 101.9,
+      supplyArea: '101.9',
+      pyeongName: '101B',
+      supplyPyeong: '30.82',
+      pyeongName2: '30B',
+      exclusiveArea: '84.99',
+      exclusivePyeong: '25.7',
+      householdCountByPyeong: '2',
+      realEstateTypeCode: 'A01',
+      exclusiveRate: '83',
+      entranceType: '계단식',
+      landPriceMaxByPtp: [Object],
+      roomCnt: '3',
+      bathroomCnt: '2'
+    }
+  ]
+}
+ */
+
 // getSchoolInfo('100772').then((data) => {console.log("School data: 000000000000000000", data)} );
+
+aptPrice
